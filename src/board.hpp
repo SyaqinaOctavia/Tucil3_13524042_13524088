@@ -6,11 +6,11 @@
 using namespace std;
 
 struct Board {
-    vector<string> grid;          // grid[r] adalah string baris ke-r
-    vector<vector<int>> cost;     // cost[r][c]
+    vector<vector<char>> grid; 
+    vector<vector<int>> cost;  
     int rows;
     int cols;
-    Node start;                             // posisi Z
-    Node goal;                              // posisi O
-    vector<Node> checkpoints;          // checkpoints[i] = posisi angka i
+    Node start;   
+    Node goal;  
+    vector<Node> checkpoints; //checkpoints[i] = posisi angka i
 };
