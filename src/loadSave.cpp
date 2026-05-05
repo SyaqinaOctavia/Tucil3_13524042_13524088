@@ -1,4 +1,5 @@
 #include "loadSave.hpp"
+#include <limits>
 
 void loadFile(string filename, Board* mainBoard){
     string defaultPath = "../data/input/";
@@ -12,25 +13,42 @@ void loadFile(string filename, Board* mainBoard){
     int i = 0, j = 0;
 
     file >> mainBoard->rows >> mainBoard->cols;
-    file.ignore(); 
+    file.ignore(numeric_limits<streamsize>::max(), '\n');
 
     vector<char> rowC;
     vector<int> rowI;
-
+    
     while(i < mainBoard->rows){
         file.get(ch);
+        
+        if (ch == '\r') continue;
         if (ch == '\n') {
+            if (j != mainBoard->cols) {
+                cout << "Baris " << i << " panjangnya " << j 
+                     << ", harusnya " << mainBoard->cols << "\n";
+                return;
+            }
+
             mainBoard->grid.push_back(rowC);
             rowC.clear();
             i++;
             j = 0;        
         }else {
-            rowC.push_back(ch);
-            j++;
-            if(j > mainBoard->cols){
+            if(j >= mainBoard->cols){
                 cout << "board tidak valid\n";
                 break;
             }
+
+            rowC.push_back(ch);
+
+            if(isdigit(ch)){
+                int num = ch - '0';
+                mainBoard->checkpoints[num] = Node{i, j}; // save checkpoint
+            }
+            if(ch == 'O') mainBoard->goal = Node{i, j}; // save target tile
+            if(ch == 'Z') mainBoard->start = Node{i, j}; // save target tile
+
+            j++;
         }
     }
 
@@ -38,17 +56,21 @@ void loadFile(string filename, Board* mainBoard){
 
     i = 0;
     while (i < mainBoard->rows && getline(file, line)) {
-        vector<int> rowI;
+        if (!line.empty() && line.back() == '\r') {
+            line.pop_back();
+        }
+        
         stringstream ss(line);
-        string num;
+        int num;
         while (ss >> num) {
-            rowI.push_back(stoi(num));
+            rowI.push_back(num);
         }
         if ((int)rowI.size() < mainBoard->cols) {
             cout << "cost tidak valid di baris " << i << "\n";
-            break;
+            return;
         }
         mainBoard->cost.push_back(rowI);
+        rowI.clear();
         i++;
     }
 }
