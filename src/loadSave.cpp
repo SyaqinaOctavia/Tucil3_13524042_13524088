@@ -1,8 +1,8 @@
-#include "loadSave.hpp"
+#include "include/loadSave.hpp"
 #include <limits>
 
 void loadFile(string filename, Board* mainBoard){
-    string defaultPath = "../data/input/";
+    string defaultPath = "../test/input/";
     ifstream file(defaultPath + filename);
 
     if (!file.is_open()) {
