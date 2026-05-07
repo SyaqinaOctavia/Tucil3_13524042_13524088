@@ -13,8 +13,17 @@ static inline pair<int,int> getComponentDir(char dir) {
     return {0,0};
 }
 
-vector<Edge> getSlideEdges(const Board& board, Node n, char dir) {
-    vector<Edge> edges;
+bool tilesContainNode(const vector<pair<int,int>>& tiles, const Node& n){
+    for (const pair<int,int>& tile : tiles) {
+        if (tile.first == n.row && tile.second == n.col) {
+            return true;
+        }
+    }
+    return false;
+}
+
+// Build edge hasil sliding dari node n ke arah dir
+optional<Edge> getSlideEdge(const Board& board, Node n, char dir) {
     vector<pair<int,int>> pathTiles;
     int totalCost = 0;
 
@@ -28,17 +37,17 @@ vector<Edge> getSlideEdges(const Board& board, Node n, char dir) {
         int dc = comp.second;
         int try_row = r + dr;
         int try_col = c + dc;
-        // Handle keluar map
+        // Handle keluar map, tidak hasilkan edge (invalid path) 
         if (try_row<0 || try_col<0 || try_row>=board.rows || try_col>=board.cols){
-            return edges;
+            return nullopt;
         }
-        // Handle ketemu batu
+        // Handle ketemu batu, berhenti di tile sebelumnya
         if (board.grid[try_row][try_col] == 'X'){
             break; 
         } 
-        // Handle ketemu lava, tp ttp mencatat ke pathTiles dan hitung cost di Lava tile
+        // Handle ketemu lava, tidak hasilkan edge (invalid path) 
         if (board.grid[try_row][try_col] == 'L'){
-            return edges;
+            return nullopt;
         }
 
         r = try_row;
@@ -46,6 +55,7 @@ vector<Edge> getSlideEdges(const Board& board, Node n, char dir) {
         pathTiles.push_back({r, c});
         totalCost += board.cost[r][c];
     }
+    // Kalau valid path dan gak diem di tempat, buat edge
     if (pathTiles.size() > 1) {
         Edge e;
         e.curr = n;
@@ -53,10 +63,10 @@ vector<Edge> getSlideEdges(const Board& board, Node n, char dir) {
         e.direction = dir;
         e.tiles = pathTiles;
         e.cost = totalCost;
-        edges.push_back(e);
+        return e;
     }
-    
-    return edges;
+
+    return nullopt;
 }
 
 // Build graph dari board 
@@ -73,24 +83,29 @@ void buildGraph(const Board& board, Graph& graph) {
             }
         }
     }
-    
+    // Hitung total jumlah checkpoint di map 
     for (const Node& n : board.checkpoints) {
         if (n.row != -1) graph.num_checkpoints++;
     }
     
-    // Build adjacency list dari edge yang valid
+    // Build adjacency list 
     char possible_dir[4] = {'U', 'D', 'L', 'R'};
    
     for (const Node& n : graph.nodes) graph.adj.emplace(n, vector<Edge>());
+    for (const Node& n : graph.nodes) graph.rev_adj.emplace(n, vector<Edge>());
 
     for (const Node& n : graph.nodes) {
         for (int i=0; i<4; i++) {
-            vector<Edge> slide_edges = getSlideEdges(board, n, possible_dir[i]);
-            if (!slide_edges.empty()) {
-                vector<Edge> &vec = graph.adj[n];
-                for (const Edge& e : slide_edges) {
-                    vec.push_back(e);  
-                }
+            optional<Edge> e = getSlideEdge(board, n, possible_dir[i]);
+            if (e.has_value()) {
+                graph.adj[n].push_back(*e);  //isi tabel adj pada node n dengan edge hasil sliding
+                // Catat juga reverse adj list untuk DistanceTable
+                Edge rev;
+                rev.curr = e->next;
+                rev.next = e->curr;
+                rev.cost = e->cost;
+                graph.rev_adj[e->next].push_back(rev);  
+                
             }
         }
     }
