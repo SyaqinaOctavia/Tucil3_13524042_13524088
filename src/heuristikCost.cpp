@@ -89,7 +89,7 @@ DistanceTable getDistanceTable(const Graph& g, const Board& board){
     distTable.distToGoal[g.goal] = 0;
 
     // Min priority queue
-    std::priority_queue<NodeQueue, vector<NodeQueue>, greater<NodeQueue>> priorQ;
+    std::priority_queue<NodeQueue, vector<NodeQueue>, greater<NodeQueue>> goalQ;
     goalQ.push({g.goal, 0}); 
     while (!goalQ.empty()){
         NodeQueue curr = goalQ.top();  //node yang punya dist terkecil diproses
