@@ -27,14 +27,14 @@ struct DistanceTable{
     vector<unordered_map<Node,int,NodeHash>> distToCheckpoint;  //catat dist tiap Node ke tiap Checkpoint
 };
 
-class DjikstraCost : public HeuristikCost{
+class DijkstraCost : public HeuristikCost{
 private:
     DistanceTable* distTable;  //precompute dist dari tiap Node ke tiap checkpoint dan ke goal
 public:
-    DjikstraCost(DistanceTable* distTable){
-        distTable = distTable;
-    }
+    DijkstraCost(DistanceTable* distTable) : distTable(distTable) {};
     float cost(const Board& board, const Graph& graph, const State& s) override;
 };
+
+DistanceTable getDistanceTable(const Graph& g, const Board& board);
 
 
