@@ -69,15 +69,6 @@ float DijkstraCost::cost(const Board& board, const Graph& graph, const State& s)
 
     return h;
 }
-// Struct untuk min priority queue based on distance minimum
-struct NodeQueue{
-    Node node;
-    int dist;
-
-    bool operator>(const NodeQueue& other) const{
-        return dist > other.dist;
-    }
-};
 DistanceTable getDistanceTable(const Graph& g, const Board& board){
     DistanceTable distTable;
 
