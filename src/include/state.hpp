@@ -19,7 +19,7 @@ struct StateHash{
     }
 };
 
-State nextState(const Board& board, const State& curr, const Edge& edge){
+inline State nextState(const Board& board, const State& curr, const Edge& edge){
     State next;
     next.pos = edge.next;
     next.nextCheckpoint = curr.nextCheckpoint;
