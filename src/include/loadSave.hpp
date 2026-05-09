@@ -3,6 +3,7 @@
 #include <sstream>
 #include <string>
 #include "board.hpp"
+#include "include/gui.hpp"
 using namespace std;
 
 void loadFile(string filename, Board* mainBoard);
