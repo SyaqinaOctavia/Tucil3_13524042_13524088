@@ -53,16 +53,146 @@ SearchResult SearchAlgorithm::searchUCS(const Board& board, const Graph& g){
             return res;
         }
         // Daftarkan node tetangga ke queue
-        for (const Edge& e : g.adj.at(currState.pos)){ 
-            State nState = nextState(board, currState, e);
+        for (const Edge& e : g.adj.at(currState.pos)){
+            auto maybeN = nextState(board, currState, e);
+            if (!maybeN) continue;  //slide melanggar urutan checkpoint = game over, skip
+            State nState = *maybeN;
             gn = currCost + e.cost;  //parent cost + edge cost
             fn = gn;
             if (!visitedNode.count(nState) || fn < visitedNode[nState]){  //blm pernah dilewatin atau costnya lebih baik
                 visitedNode[nState] = fn;
                 parentState[nState] = currState;
                 parentEdge[nState] = e;
-              
-                priorQ.push({nState, gn, 0, fn}); 
+
+                priorQ.push({nState, gn, 0, fn});
+            }
+        }
+    }
+    // priorQ.empty(), not found
+    return res;
+}
+
+SearchResult SearchAlgorithm::searchGBFS(const Board& board, const Graph& g){
+    unordered_map<State, State, StateHash> parentState;
+    unordered_map<State, Edge, StateHash> parentEdge;
+    // Catat informasi search
+    SearchResult res;
+    res.found = false;
+    res.totalCost = 0;
+    res.iterations = 0;
+    res.startPos = g.start;
+
+    // GBFS: tiap state cukup di-discover sekali (gak ada re-open)
+    unordered_set<State, StateHash> discovered;
+
+    // Min priority queue berdasarkan h(n)
+    std::priority_queue<NodeStateQueue, vector<NodeStateQueue>, greater<NodeStateQueue>> priorQ;
+
+    // Push start node ke queue
+    State startState;
+    startState.pos = g.start;
+    startState.nextCheckpoint = 0;
+
+    float h0 = hCost->cost(board, g, startState);
+    discovered.insert(startState);
+    priorQ.push({startState, 0.0f, h0, h0});  //fCost = h(n)
+
+    // Proses sampai kosong atau sampai ketemu goal
+    while (!(priorQ.empty())){
+        NodeStateQueue currNQ = priorQ.top();  //expand node yang punya h paling kecil
+        priorQ.pop();
+        State currState = currNQ.state;
+        float currG = currNQ.gCost;  //cumulative cost sampai currState (untuk reporting)
+
+        res.iterations++;
+
+        // Kalau udah ketemu goal, berhenti
+        if (currState.pos == g.goal && allCheckpointVisited(currState, g)){
+            res.found = true;
+            res.totalCost = currG;
+            res.path = reconstructPath(parentState, parentEdge, startState, currState);
+
+            return res;
+        }
+        // Daftarkan node tetangga ke queue
+        for (const Edge& e : g.adj.at(currState.pos)){
+            auto maybeN = nextState(board, currState, e);
+            if (!maybeN) continue;  //slide melanggar urutan checkpoint = game over, skip
+            State nState = *maybeN;
+            if (discovered.count(nState)) continue;  //GBFS: skip kalau udah pernah di-discover
+
+            discovered.insert(nState);
+            float gn = currG + e.cost;
+            float hn = hCost->cost(board, g, nState);
+
+            parentState[nState] = currState;
+            parentEdge[nState] = e;
+            priorQ.push({nState, gn, hn, hn});  //fCost = h(n)
+        }
+    }
+    // priorQ.empty(), not found
+    return res;
+}
+
+SearchResult SearchAlgorithm::searchAStar(const Board& board, const Graph& g){
+    unordered_map<State, State, StateHash> parentState;
+    unordered_map<State, Edge, StateHash> parentEdge;
+    // Catat informasi search
+    SearchResult res;
+    res.found = false;
+    res.totalCost = 0;
+    res.iterations = 0;
+    res.startPos = g.start;
+
+    // Catat best gCost yang pernah didapat per state (untuk re-open)
+    unordered_map<State, float, StateHash> bestG;
+
+    // Min priority queue berdasarkan f(n) = g(n) + h(n)
+    std::priority_queue<NodeStateQueue, vector<NodeStateQueue>, greater<NodeStateQueue>> priorQ;
+
+    // Push start node ke queue
+    State startState;
+    startState.pos = g.start;
+    startState.nextCheckpoint = 0;
+
+    float h0 = hCost->cost(board, g, startState);
+    bestG[startState] = 0.0f;
+    priorQ.push({startState, 0.0f, h0, h0});  //fCost = 0 + h0
+
+    // Proses sampai kosong atau sampai ketemu goal
+    while (!(priorQ.empty())){
+        NodeStateQueue currNQ = priorQ.top();  //expand node yang punya f minimum
+        priorQ.pop();
+        State currState = currNQ.state;
+        float currG = currNQ.gCost;
+
+        if (currG > bestG[currState]) continue;  //stale entry, udah ada path lebih murah ke state ini
+
+        res.iterations++;
+
+        // Kalau udah ketemu goal, berhenti
+        if (currState.pos == g.goal && allCheckpointVisited(currState, g)){
+            res.found = true;
+            res.totalCost = currG;
+            res.path = reconstructPath(parentState, parentEdge, startState, currState);
+
+            return res;
+        }
+        // Daftarkan node tetangga ke queue
+        for (const Edge& e : g.adj.at(currState.pos)){
+            auto maybeN = nextState(board, currState, e);
+            if (!maybeN) continue;  //slide melanggar urutan checkpoint = game over, skip
+            State nState = *maybeN;
+            float gn = currG + e.cost;
+
+            if (!bestG.count(nState) || gn < bestG[nState]){  //blm pernah dilewatin atau costnya lebih baik
+                bestG[nState] = gn;
+                float hn = hCost->cost(board, g, nState);
+                float fn = gn + hn;
+
+                parentState[nState] = currState;
+                parentEdge[nState] = e;
+                priorQ.push({nState, gn, hn, fn});
             }
         }
     }
