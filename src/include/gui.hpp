@@ -69,5 +69,4 @@ void unloadGuiFont();
 void drawLeftPanel (GuiState& gui, Rectangle panel);
 void drawBoardPanel(GuiState& gui, Rectangle panel, float dt);
 void drawRightPanel(GuiState& gui, Rectangle panel);
-void saveResult (const GuiState& gui);
 static void DrawMoveSequencePanel(int x, int y, int w, int h, GuiState& gui);
