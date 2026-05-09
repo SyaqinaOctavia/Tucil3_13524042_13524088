@@ -10,7 +10,7 @@ struct Board;
 using namespace std;
 
 struct Node{
-    int row, col;
+    int row = -1, col = -1;
     
     bool operator==(const Node& other) const {
         return row == other.row && col == other.col;
@@ -25,10 +25,9 @@ struct NodeHash {
 
 struct Edge{
     Node curr, next;
-    char direction;
+    char direction = '\0';
     vector<pair<int,int>> tiles;
-    // vector<int> checkpoints;
-    int cost;
+    int cost = 0;
 };
 
 struct Graph {
@@ -37,7 +36,7 @@ struct Graph {
     unordered_map<Node, vector<Edge>, NodeHash> rev_adj;  //untuk dijkstra heuristik
     Node start;
     Node goal;
-    int num_checkpoints;        // total jumlah checkpoint di map
+    int num_checkpoints = 0;        // total jumlah checkpoint di map
 };
 
 bool tilesContainNode(const vector<pair<int,int>>& tiles, const Node& n);
