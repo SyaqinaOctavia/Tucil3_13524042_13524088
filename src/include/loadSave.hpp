@@ -6,3 +6,4 @@
 using namespace std;
 
 void loadFile(string filename, Board* mainBoard);
+void saveResult(const GuiState& gui);
