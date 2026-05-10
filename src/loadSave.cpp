@@ -114,7 +114,7 @@ void saveResult(const GuiState& gui){
     if (!f.is_open()) return;
 
     const char* algoNames[] = { "UCS", "GBFS", "A*" };
-    const char* heurNames[] = { "H1 (Manhattan)", "H2 (Euclidean)", "H3 (Dijkstra)" };
+    const char* heurNames[] = { "H1 (Manhattan)", "H2 (Euclidean)", "H3 (MinSlideCost)" };
 
     f << "=========================================\n";
     f << "               RESULT LOG\n";

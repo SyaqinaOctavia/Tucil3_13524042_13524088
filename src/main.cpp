@@ -118,7 +118,6 @@ static void runSearch(GuiState& gui) {
 
     // Build heuristic
     unique_ptr<HeuristikCost> heuristic;
-    DistanceTable distTable;
 
     const bool needHeur = (gui.algoSelected != 0);
     if (needHeur) {
@@ -127,9 +126,7 @@ static void runSearch(GuiState& gui) {
         } else if (gui.heurSelected == 1) {
             heuristic.reset(new EuclideanCost());
         } else {
-            // H3: pre-compute distance table
-            distTable = getDistanceTable(gui.graph, gui.board);
-            heuristic.reset(new DijkstraCost(&distTable));
+            heuristic.reset(new MinSlideCost());
         }
     }
 

@@ -33,7 +33,6 @@ struct Edge{
 struct Graph {
     unordered_set<Node, NodeHash> nodes;
     unordered_map<Node, vector<Edge>, NodeHash> adj;
-    unordered_map<Node, vector<Edge>, NodeHash> rev_adj;  //untuk dijkstra heuristik
     Node start;
     Node goal;
     int num_checkpoints = 0;        // total jumlah checkpoint di map

@@ -309,7 +309,7 @@ void drawLeftPanel(GuiState& gui, Rectangle panel) {
     bool heurOn = (gui.algoSelected != 0);
     Section(x, y, w, "HEURISTIC");
     y += 25;
-    const char* heurs[] = { "H1 - Manhattan", "H2 - Euclidean", "H3 - Dijkstra" };
+    const char* heurs[] = { "H1 - Manhattan", "H2 - Euclidean", "H3 - MinSlideCost" };
     for (int i = 0; i < 3; i++) {
         if (Radio(x, y, heurs[i], gui.heurSelected == i, !heurOn)) {
             if (heurOn) gui.heurSelected = i;
@@ -684,7 +684,7 @@ void drawRightPanel(GuiState& gui, Rectangle panel) {
 
     // ---- Algorithm ----
     const char* algoN[] = { "UCS", "GBFS", "A*" };
-    const char* heurN[] = { "H1 (Manhattan)", "H2 (Euclidean)", "H3 (Dijkstra)" };
+    const char* heurN[] = { "H1 (Manhattan)", "H2 (Euclidean)", "H3 (MinSlideCost)" };
     Section(x, y, w, "CONFIGURATION");
     y += 24;
     string algoStr = algoN[gui.algoSelected];
