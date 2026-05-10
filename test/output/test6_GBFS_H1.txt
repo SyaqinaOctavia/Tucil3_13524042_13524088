@@ -1,0 +1,19 @@
+=========================================
+               RESULT LOG
+=========================================
+
+File       : test6.txt
+Algorithm  : GBFS + H1 (Manhattan)
+Waktu      : 0.54 ms
+Iterasi    : 3
+Status     : SOLUSI DITEMUKAN
+Total Cost : 1
+Langkah    : 2
+
+Urutan Gerakan : RD
+
+Detail Langkah:
+  Step   1 : RIGHT	(7,1) -> (7,7)  cost=1  kumulatif=1
+  Step   2 : DOWN	(7,7) -> (8,7)  cost=0  kumulatif=1
+
+=========================================

@@ -1,0 +1,11 @@
+=========================================
+               RESULT LOG
+=========================================
+
+File       : test4.txt
+Algorithm  : A* + H3 (MinSlideCost)
+Waktu      : 0.48 ms
+Iterasi    : 18
+Status     : SOLUSI TIDAK DITEMUKAN
+
+=========================================

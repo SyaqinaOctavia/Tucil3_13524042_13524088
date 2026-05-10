@@ -1,0 +1,49 @@
+=========================================
+               RESULT LOG
+=========================================
+
+File       : test25.txt
+Algorithm  : A* + H3 (MinSlideCost)
+Waktu      : 5.45 ms
+Iterasi    : 389
+Status     : SOLUSI DITEMUKAN
+Total Cost : 872
+Langkah    : 32
+
+Urutan Gerakan : RDRULURLDLDRURDRURULULURURDLRULU
+
+Detail Langkah:
+  Step   1 : RIGHT	(4,18) -> (4,21)  cost=22  kumulatif=22
+  Step   2 : DOWN	(4,21) -> (10,21)  cost=33  kumulatif=55
+  Step   3 : RIGHT	(10,21) -> (10,23)  cost=16  kumulatif=71
+  Step   4 : UP	(10,23) -> (8,23)  cost=16  kumulatif=87
+  Step   5 : LEFT	(8,23) -> (8,4)  cost=102  kumulatif=189
+  Step   6 : UP	(8,4) -> (4,4)  cost=15  kumulatif=204
+  Step   7 : RIGHT	(4,4) -> (4,7)  cost=16  kumulatif=220
+  Step   8 : LEFT	(4,7) -> (4,3)  cost=14  kumulatif=234
+  Step   9 : DOWN	(4,3) -> (7,3)  cost=13  kumulatif=247
+  Step  10 : LEFT	(7,3) -> (7,1)  cost=11  kumulatif=258
+  Step  11 : DOWN	(7,1) -> (8,1)  cost=7  kumulatif=265
+  Step  12 : RIGHT	(8,1) -> (8,2)  cost=8  kumulatif=273
+  Step  13 : UP	(8,2) -> (6,2)  cost=4  kumulatif=277
+  Step  14 : RIGHT	(6,2) -> (6,18)  cost=78  kumulatif=355
+  Step  15 : DOWN	(6,18) -> (19,18)  cost=63  kumulatif=418
+  Step  16 : RIGHT	(19,18) -> (19,19)  cost=2  kumulatif=420
+  Step  17 : UP	(19,19) -> (7,19)  cost=50  kumulatif=470
+  Step  18 : RIGHT	(7,19) -> (7,22)  cost=10  kumulatif=480
+  Step  19 : UP	(7,22) -> (5,22)  cost=15  kumulatif=495
+  Step  20 : LEFT	(5,22) -> (5,20)  cost=6  kumulatif=501
+  Step  21 : UP	(5,20) -> (4,20)  cost=7  kumulatif=508
+  Step  22 : LEFT	(4,20) -> (4,9)  cost=70  kumulatif=578
+  Step  23 : UP	(4,9) -> (2,9)  cost=10  kumulatif=588
+  Step  24 : RIGHT	(2,9) -> (2,11)  cost=7  kumulatif=595
+  Step  25 : UP	(2,11) -> (1,11)  cost=5  kumulatif=600
+  Step  26 : RIGHT	(1,11) -> (1,13)  cost=10  kumulatif=610
+  Step  27 : DOWN	(1,13) -> (12,13)  cost=64  kumulatif=674
+  Step  28 : LEFT	(12,13) -> (12,1)  cost=64  kumulatif=738
+  Step  29 : RIGHT	(12,1) -> (12,19)  cost=95  kumulatif=833
+  Step  30 : UP	(12,19) -> (7,19)  cost=21  kumulatif=854
+  Step  31 : LEFT	(7,19) -> (7,16)  cost=14  kumulatif=868
+  Step  32 : UP	(7,16) -> (6,16)  cost=4  kumulatif=872
+
+=========================================

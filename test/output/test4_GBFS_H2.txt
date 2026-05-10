@@ -1,0 +1,11 @@
+=========================================
+               RESULT LOG
+=========================================
+
+File       : test4.txt
+Algorithm  : GBFS + H2 (Euclidean)
+Waktu      : 0.83 ms
+Iterasi    : 18
+Status     : SOLUSI TIDAK DITEMUKAN
+
+=========================================

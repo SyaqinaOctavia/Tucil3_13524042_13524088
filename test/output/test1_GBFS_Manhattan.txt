@@ -1,0 +1,25 @@
+=========================================
+               RESULT LOG
+=========================================
+
+File       : test1.txt
+Algorithm  : GBFS + H1 (Manhattan)
+Waktu      : 0.19 ms
+Iterasi    : 9
+Status     : SOLUSI DITEMUKAN
+Total Cost : 87
+Langkah    : 8
+
+Urutan Gerakan : RULUDRUR
+
+Detail Langkah:
+  Step   1 : RIGHT	(5,1) -> (5,3)  cost=7  kumulatif=7
+  Step   2 : UP	(5,3) -> (3,3)  cost=10  kumulatif=17
+  Step   3 : LEFT	(3,3) -> (3,1)  cost=10  kumulatif=27
+  Step   4 : UP	(3,1) -> (1,1)  cost=10  kumulatif=37
+  Step   5 : DOWN	(1,1) -> (5,1)  cost=24  kumulatif=61
+  Step   6 : RIGHT	(5,1) -> (5,3)  cost=7  kumulatif=68
+  Step   7 : UP	(5,3) -> (3,3)  cost=10  kumulatif=78
+  Step   8 : RIGHT	(3,3) -> (3,5)  cost=9  kumulatif=87
+
+=========================================

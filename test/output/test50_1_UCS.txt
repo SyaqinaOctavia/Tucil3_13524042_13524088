@@ -1,0 +1,94 @@
+=========================================
+               RESULT LOG
+=========================================
+
+File       : test50_1.txt
+Algorithm  : UCS
+Waktu      : 22.36 ms
+Iterasi    : 1658
+Status     : SOLUSI DITEMUKAN
+Total Cost : 1674
+Langkah    : 77
+
+Urutan Gerakan : ULURULDLDLURURDLDLULULURDRULULULDLDLDLURULDRLURULULURULURDURDLDRURDLDLDLURURU
+
+Detail Langkah:
+  Step   1 : UP	(35,48) -> (34,48)  cost=3  kumulatif=3
+  Step   2 : LEFT	(34,48) -> (34,47)  cost=1  kumulatif=4
+  Step   3 : UP	(34,47) -> (32,47)  cost=8  kumulatif=12
+  Step   4 : RIGHT	(32,47) -> (32,48)  cost=5  kumulatif=17
+  Step   5 : UP	(32,48) -> (27,48)  cost=23  kumulatif=40
+  Step   6 : LEFT	(27,48) -> (27,46)  cost=10  kumulatif=50
+  Step   7 : DOWN	(27,46) -> (31,46)  cost=18  kumulatif=68
+  Step   8 : LEFT	(31,46) -> (31,44)  cost=10  kumulatif=78
+  Step   9 : DOWN	(31,44) -> (41,44)  cost=43  kumulatif=121
+  Step  10 : LEFT	(41,44) -> (41,37)  cost=34  kumulatif=155
+  Step  11 : UP	(41,37) -> (32,37)  cost=46  kumulatif=201
+  Step  12 : RIGHT	(32,37) -> (32,40)  cost=24  kumulatif=225
+  Step  13 : UP	(32,40) -> (27,40)  cost=34  kumulatif=259
+  Step  14 : RIGHT	(27,40) -> (27,42)  cost=8  kumulatif=267
+  Step  15 : DOWN	(27,42) -> (28,42)  cost=2  kumulatif=269
+  Step  16 : LEFT	(28,42) -> (28,37)  cost=17  kumulatif=286
+  Step  17 : DOWN	(28,37) -> (30,37)  cost=7  kumulatif=293
+  Step  18 : LEFT	(30,37) -> (30,34)  cost=21  kumulatif=314
+  Step  19 : UP	(30,34) -> (29,34)  cost=2  kumulatif=316
+  Step  20 : LEFT	(29,34) -> (29,29)  cost=22  kumulatif=338
+  Step  21 : UP	(29,29) -> (28,29)  cost=4  kumulatif=342
+  Step  22 : LEFT	(28,29) -> (28,25)  cost=20  kumulatif=362
+  Step  23 : UP	(28,25) -> (24,25)  cost=25  kumulatif=387
+  Step  24 : RIGHT	(24,25) -> (24,29)  cost=16  kumulatif=403
+  Step  25 : DOWN	(24,29) -> (26,29)  cost=12  kumulatif=415
+  Step  26 : RIGHT	(26,29) -> (26,31)  cost=2  kumulatif=417
+  Step  27 : UP	(26,31) -> (21,31)  cost=15  kumulatif=432
+  Step  28 : LEFT	(21,31) -> (21,21)  cost=55  kumulatif=487
+  Step  29 : UP	(21,21) -> (7,21)  cost=62  kumulatif=549
+  Step  30 : LEFT	(7,21) -> (7,19)  cost=13  kumulatif=562
+  Step  31 : UP	(7,19) -> (2,19)  cost=29  kumulatif=591
+  Step  32 : LEFT	(2,19) -> (2,16)  cost=17  kumulatif=608
+  Step  33 : DOWN	(2,16) -> (15,16)  cost=64  kumulatif=672
+  Step  34 : LEFT	(15,16) -> (15,13)  cost=12  kumulatif=684
+  Step  35 : DOWN	(15,13) -> (17,13)  cost=11  kumulatif=695
+  Step  36 : LEFT	(17,13) -> (17,9)  cost=23  kumulatif=718
+  Step  37 : DOWN	(17,9) -> (25,9)  cost=50  kumulatif=768
+  Step  38 : LEFT	(25,9) -> (25,1)  cost=46  kumulatif=814
+  Step  39 : UP	(25,1) -> (24,1)  cost=8  kumulatif=822
+  Step  40 : RIGHT	(24,1) -> (24,14)  cost=62  kumulatif=884
+  Step  41 : UP	(24,14) -> (23,14)  cost=1  kumulatif=885
+  Step  42 : LEFT	(23,14) -> (23,13)  cost=1  kumulatif=886
+  Step  43 : DOWN	(23,13) -> (26,13)  cost=14  kumulatif=900
+  Step  44 : RIGHT	(26,13) -> (26,21)  cost=34  kumulatif=934
+  Step  45 : LEFT	(26,21) -> (26,10)  cost=39  kumulatif=973
+  Step  46 : UP	(26,10) -> (24,10)  cost=15  kumulatif=988
+  Step  47 : RIGHT	(24,10) -> (24,14)  cost=15  kumulatif=1003
+  Step  48 : UP	(24,14) -> (23,14)  cost=1  kumulatif=1004
+  Step  49 : LEFT	(23,14) -> (23,13)  cost=1  kumulatif=1005
+  Step  50 : UP	(23,13) -> (19,13)  cost=17  kumulatif=1022
+  Step  51 : LEFT	(19,13) -> (19,9)  cost=18  kumulatif=1040
+  Step  52 : UP	(19,9) -> (9,9)  cost=53  kumulatif=1093
+  Step  53 : RIGHT	(9,9) -> (9,13)  cost=27  kumulatif=1120
+  Step  54 : UP	(9,13) -> (3,13)  cost=28  kumulatif=1148
+  Step  55 : LEFT	(3,13) -> (3,3)  cost=42  kumulatif=1190
+  Step  56 : UP	(3,3) -> (2,3)  cost=9  kumulatif=1199
+  Step  57 : RIGHT	(2,3) -> (2,12)  cost=42  kumulatif=1241
+  Step  58 : DOWN	(2,12) -> (12,12)  cost=41  kumulatif=1282
+  Step  59 : UP	(12,12) -> (1,12)  cost=44  kumulatif=1326
+  Step  60 : RIGHT	(1,12) -> (1,14)  cost=11  kumulatif=1337
+  Step  61 : DOWN	(1,14) -> (4,14)  cost=3  kumulatif=1340
+  Step  62 : LEFT	(4,14) -> (4,10)  cost=17  kumulatif=1357
+  Step  63 : DOWN	(4,10) -> (5,10)  cost=5  kumulatif=1362
+  Step  64 : RIGHT	(5,10) -> (5,13)  cost=11  kumulatif=1373
+  Step  65 : UP	(5,13) -> (3,13)  cost=8  kumulatif=1381
+  Step  66 : RIGHT	(3,13) -> (3,16)  cost=12  kumulatif=1393
+  Step  67 : DOWN	(3,16) -> (15,16)  cost=60  kumulatif=1453
+  Step  68 : LEFT	(15,16) -> (15,13)  cost=12  kumulatif=1465
+  Step  69 : DOWN	(15,13) -> (17,13)  cost=11  kumulatif=1476
+  Step  70 : LEFT	(17,13) -> (17,9)  cost=23  kumulatif=1499
+  Step  71 : DOWN	(17,9) -> (25,9)  cost=50  kumulatif=1549
+  Step  72 : LEFT	(25,9) -> (25,1)  cost=46  kumulatif=1595
+  Step  73 : UP	(25,1) -> (24,1)  cost=8  kumulatif=1603
+  Step  74 : RIGHT	(24,1) -> (24,14)  cost=62  kumulatif=1665
+  Step  75 : UP	(24,14) -> (23,14)  cost=1  kumulatif=1666
+  Step  76 : RIGHT	(23,14) -> (23,15)  cost=7  kumulatif=1673
+  Step  77 : UP	(23,15) -> (22,15)  cost=1  kumulatif=1674
+
+=========================================

@@ -92,13 +92,25 @@ void loadFile(string filename, Board* mainBoard){
 
 //  =================== SAVE RESULT ===================
 void saveResult(const GuiState& gui){
-    // Build filename with timestamp
-    time_t now = time(nullptr);
-    char ts[32];
-    strftime(ts, sizeof(ts), "%Y%m%d_%H%M%S", localtime(&now));
-
     const char* algoTag[] = { "UCS", "GBFS", "AStar" };
-    string fname = string("result_") + algoTag[gui.algoSelected] + "_" + ts + ".txt";
+    const char* heurTag[] = { "H1", "H2", "H3" };
+
+    // Extract base filename from gui.fileInput
+    string baseName = string(gui.fileInput);
+    size_t lastSlash = baseName.find_last_of("/\\");
+    if (lastSlash != string::npos) baseName = baseName.substr(lastSlash + 1);
+    size_t dotPos = baseName.find_last_of('.');
+    if (dotPos != string::npos) baseName = baseName.substr(0, dotPos);
+
+    // Build filename as test_<algo>_<heuristic> or test_<algo>
+    string fname;
+    if (gui.algoSelected == 0) {
+        // UCS: no heuristic
+        fname = baseName + "_" + algoTag[gui.algoSelected] + ".txt";
+    } else {
+        // GBFS or A*: include heuristic
+        fname = baseName + "_" + algoTag[gui.algoSelected] + "_" + heurTag[gui.heurSelected] + ".txt";
+    }
 
     // Try output directories first, then current dir.
     auto tryOpen = [&](const filesystem::path& dir) -> ofstream {

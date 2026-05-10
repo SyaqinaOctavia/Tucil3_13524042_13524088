@@ -1,0 +1,11 @@
+=========================================
+               RESULT LOG
+=========================================
+
+File       : test4.txt
+Algorithm  : UCS
+Waktu      : 0.74 ms
+Iterasi    : 18
+Status     : SOLUSI TIDAK DITEMUKAN
+
+=========================================

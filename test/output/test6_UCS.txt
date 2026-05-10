@@ -1,0 +1,25 @@
+=========================================
+               RESULT LOG
+=========================================
+
+File       : test6.txt
+Algorithm  : UCS
+Waktu      : 0.58 ms
+Iterasi    : 9
+Status     : SOLUSI DITEMUKAN
+Total Cost : 0
+Langkah    : 8
+
+Urutan Gerakan : URDRULDR
+
+Detail Langkah:
+  Step   1 : UP	(7,1) -> (2,1)  cost=0  kumulatif=0
+  Step   2 : RIGHT	(2,1) -> (2,2)  cost=0  kumulatif=0
+  Step   3 : DOWN	(2,2) -> (3,2)  cost=0  kumulatif=0
+  Step   4 : RIGHT	(3,2) -> (3,7)  cost=0  kumulatif=0
+  Step   5 : UP	(3,7) -> (1,7)  cost=0  kumulatif=0
+  Step   6 : LEFT	(1,7) -> (1,6)  cost=0  kumulatif=0
+  Step   7 : DOWN	(1,6) -> (8,6)  cost=0  kumulatif=0
+  Step   8 : RIGHT	(8,6) -> (8,7)  cost=0  kumulatif=0
+
+=========================================

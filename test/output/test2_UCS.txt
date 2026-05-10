@@ -1,0 +1,24 @@
+=========================================
+               RESULT LOG
+=========================================
+
+File       : test2.txt
+Algorithm  : UCS
+Waktu      : 0.18 ms
+Iterasi    : 9
+Status     : SOLUSI DITEMUKAN
+Total Cost : 112
+Langkah    : 7
+
+Urutan Gerakan : URULDLD
+
+Detail Langkah:
+  Step   1 : UP	(5,4) -> (2,4)  cost=24  kumulatif=24
+  Step   2 : RIGHT	(2,4) -> (2,6)  cost=16  kumulatif=40
+  Step   3 : UP	(2,6) -> (1,6)  cost=8  kumulatif=48
+  Step   4 : LEFT	(1,6) -> (1,5)  cost=8  kumulatif=56
+  Step   5 : DOWN	(1,5) -> (4,5)  cost=24  kumulatif=80
+  Step   6 : LEFT	(4,5) -> (4,2)  cost=24  kumulatif=104
+  Step   7 : DOWN	(4,2) -> (5,2)  cost=8  kumulatif=112
+
+=========================================
