@@ -14,5 +14,5 @@ struct Board {
     Node goal;  
     vector<Node> checkpoints; //checkpoints[i] = posisi angka i
     
-    Board() : checkpoints(10, Node{-1, -1}) {}
+    Board() : rows(0), cols(0), start{-1, -1}, goal{-1, -1}, checkpoints(10, Node{-1, -1}) {}
 };

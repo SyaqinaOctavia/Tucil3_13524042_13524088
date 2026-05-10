@@ -3,6 +3,8 @@
 #include <sstream>
 #include <string>
 #include "board.hpp"
+#include "gui.hpp"
 using namespace std;
 
 void loadFile(string filename, Board* mainBoard);
+void saveResult(const GuiState& gui);
