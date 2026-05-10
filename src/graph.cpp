@@ -92,19 +92,12 @@ void buildGraph(const Board& board, Graph& graph) {
     char possible_dir[4] = {'U', 'D', 'L', 'R'};
    
     for (const Node& n : graph.nodes) graph.adj.emplace(n, vector<Edge>());
-    for (const Node& n : graph.nodes) graph.rev_adj.emplace(n, vector<Edge>());
 
     for (const Node& n : graph.nodes) {
         for (int i=0; i<4; i++) {
             optional<Edge> e = getSlideEdge(board, n, possible_dir[i]);
             if (e.has_value()) {
                 graph.adj[n].push_back(*e);  //isi tabel adj pada node n dengan edge hasil sliding
-                // Catat juga reverse adj list untuk DistanceTable
-                Edge rev;
-                rev.curr = e->next;
-                rev.next = e->curr;
-                rev.cost = e->cost;
-                graph.rev_adj[e->next].push_back(rev);  
                 
             }
         }

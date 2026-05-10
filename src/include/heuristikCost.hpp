@@ -22,27 +22,12 @@ public:
     float cost(const Board& board, const Graph& graph, const State& s) override;
 };
 
-struct DistanceTable{
-    unordered_map<Node, int, NodeHash> distToGoal; //catat dist tiap Node ke Goal
-    vector<unordered_map<Node,int,NodeHash>> distToCheckpoint;  //catat dist tiap Node ke tiap Checkpoint
-};
-// Struct untuk min priority queue based on distance minimum
-struct NodeQueue{
-    Node node;
-    int dist;
-
-    bool operator>(const NodeQueue& other) const{
-        return dist > other.dist;
-    }
-};
-class DijkstraCost : public HeuristikCost{
-private:
-    DistanceTable* distTable;  //precompute dist dari tiap Node ke tiap checkpoint dan ke goal
+class MinSlideCost : public HeuristikCost{
 public:
-    DijkstraCost(DistanceTable* distTable) : distTable(distTable) {};
     float cost(const Board& board, const Graph& graph, const State& s) override;
+private:
+    vector<int> minCostRow;   // min cost tile valid untuk setiap baris
+    vector<int> minCostCol;   // min cost tile valid untuk setiap kolom
+    bool precomputed = false;
+    void precompute(const Board& board);
 };
-
-DistanceTable getDistanceTable(const Graph& g, const Board& board);
-
-
